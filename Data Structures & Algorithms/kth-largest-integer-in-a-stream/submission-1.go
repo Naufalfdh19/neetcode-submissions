@@ -1,0 +1,22 @@
+import ("slices")
+
+type KthLargest struct {
+    k int
+	nums []int
+}
+
+
+func Constructor(k int, nums []int) KthLargest {
+    return KthLargest{
+		k: k,
+		nums: nums,
+	}
+}
+
+
+func (this *KthLargest) Add(val int) int {
+    this.nums = append(this.nums,val)
+	slices.Sort(this.nums)
+
+	return this.nums[len(this.nums)-this.k]
+}
